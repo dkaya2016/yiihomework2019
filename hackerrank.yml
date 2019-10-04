@@ -1,0 +1,10 @@
+version: 1.0
+configuration:
+  has_webserver: true
+  ide_config:
+    default_open_files:
+      - web/index.html
+    project_menu:
+      run: open http://127.0.0.1:8000
+      install: sh install.sh
+      test: docker-compose run --rm php codecept run

@@ -22,17 +22,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'first_name:ntext',
             'last_name:ntext',
             'email:ntext',
             'personal_code',
-            //'phone',
-            //'active:boolean',
-            //'dead:boolean',
-            //'lang:ntext',
-
+            'phone',
+            'active:boolean',
+            'dead:boolean',
+            'lang:ntext',
+            'age',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

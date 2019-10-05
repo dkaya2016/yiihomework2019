@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'active:boolean',
             'dead:boolean',
             'lang:ntext',
+            'age:ntext',
         ],
     ]) ?>
 

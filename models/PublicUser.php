@@ -19,6 +19,7 @@ use Yii;
  */
 class PublicUser extends \yii\db\ActiveRecord
 {
+    private $allowedLoanAge = 18;
     /**
      * {@inheritdoc}
      */
@@ -44,11 +45,21 @@ class PublicUser extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * It gets the age from personal code. If the date format is correct and the date of birth
+     * less than today, it return the age. Otherwise return -
+     */
+
     public function getAge() {
         if ( ($age = $this->calculateAge()) && is_numeric($age) )
             return $age;
         return '-';
     }
+
+    /**
+     * It calculates the age from personal code. If the date format is not correct and date of birth
+     * greater than today, ['error' => 'YXYX'] it return the an error message. Otherwise return the age.
+     */
 
     public function calculateAge() {
         // Length control
@@ -92,11 +103,30 @@ class PublicUser extends \yii\db\ActiveRecord
         return date_diff(date_create($dateOfBirth), date_create(date("Y-m-d")))->format('%y');
     }
 
+    /**
+     * It validates the personal code only for age perspective.
+     */
+
     public function validatePersonalCode($attribute, $params, $validator){
         if ( ($age = $this->calculateAge()) && !is_numeric($age) ) {
             $this->addError($attribute, $age['error']);
         }
     }
+
+
+    /**
+     * It checks the age from personal code and if the date is valid according to age perspective and
+     * age is equal and greater than allowedLoanAge it returns true. If the for date format is wrong or
+     * age is less than allowedLoanAge return false.
+     */
+
+    public function isAllowedToTakeLoan(){
+        if ( ($age = $this->calculateAge()) && is_numeric($age) && ($age >= $this->allowedLoanAge)) {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
 
     /**
      * {@inheritdoc}

@@ -90,4 +90,20 @@ class AgeCalculationTest extends \Codeception\Test\Unit
                           );
     }
 
+    /**
+     *  Dead person check
+     */
+    public function testAgeCalculationDeadPerson()
+    {
+        $user = new PublicUser();
+        $user->personal_code = '37501110011';
+        $user->dead = TRUE;
+        $age = $user->calculateAge();
+        $this->assertTrue( is_array($age)
+                           && isset($age['error'])
+                           && strpos($age['error'], 'because person is dead') !== FALSE
+                          );
+
+    }
+
 }

@@ -62,6 +62,11 @@ class PublicUser extends \yii\db\ActiveRecord
      */
 
     public function calculateAge() {
+
+        // Dead person control
+        if ($this->dead)
+            return [ 'error' => 'Unable to calculate because person is dead.'];
+
         // Length control
         if ((strlen($this->personal_code)) != 11)
             return [ 'error' => 'Personal Id length must be 11'];

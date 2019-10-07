@@ -24,13 +24,14 @@ class UserLoanAcceptanceTest extends \Codeception\Test\Unit
         // 44 years old person
         $user = new PublicUser();
         $user->personal_code = '37501010011';
+        $user->dead = FALSE;
         $this->assertTrue($user->isAllowedToTakeLoan() === TRUE);
     }
 
     /**
-     *  User not allowed to take a loan
+     *  Age less than 18 User not allowed to take a loan
      */
-    public function testUserNotAllowedToTakeLoan()
+    public function testAgeLessThan18UserNotAllowedToTakeLoan()
     {
         // 8 years old person
         $user = new PublicUser();
@@ -56,6 +57,18 @@ class UserLoanAcceptanceTest extends \Codeception\Test\Unit
         // Wrong Date of birth is set as 1975-33-50
         $user = new PublicUser();
         $user->personal_code = '37533500011';
+        $this->assertTrue($user->isAllowedToTakeLoan() === FALSE);
+    }
+
+    /**
+     *  Dead User not allowed to take a loan
+     */
+    public function testUserDeadUserNotAllowedToTakeLoan()
+    {
+        // Wrong Date of birth is set as 1975-33-50
+        $user = new PublicUser();
+        $user->personal_code = '37533500011';
+        $user->dead = TRUE;
         $this->assertTrue($user->isAllowedToTakeLoan() === FALSE);
     }
 }

@@ -14,12 +14,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Public User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Public User', ['create'], ['class' => 'button-orange']) ?>
     </p>
 
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'rowOptions' => function($model){
+         },
+        'tableOptions' => [
+            'id' => 'theDatatable',
+            'class'=>'table table-bordered bottom-lined-table'
+        ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'id',

@@ -105,3 +105,12 @@
 .bottom-lined-table tr {
     border-bottom: 2pt solid  lightgrey;!important;
 }
+
+.midnavcontainer ul, ol{
+   margin-top: 15px!important;
+   margin-bottom: 10px!important;
+}
+
+.mid-navbar-brand{
+    margin-top: -10px;
+}

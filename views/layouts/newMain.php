@@ -67,18 +67,18 @@ AppAsset::register($this);
     <section class="top-bar-section client-area midnav-class">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w2-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        <span class="icon-bar"></span></button><a class="navbar-brand" href="/index.php"><img src="/images/cs_logo.jpg"></a></div>
-        <div>
-            <ul class="right"><li><a href="index.php">Link-1</a></li>
+            </button>
+            <a class="navbar-brand mid-navbar-brand" href="/index.php"><img src="/images/cs_logo.jpg"></a>
+        </div>
+        <div class="midnavcontainer">
+            <ul class="right">
+                <li><a href="index.php">Link-11</a></li>
                 <li><a href="index.php">Link-2</a></li>
                 <li><a href="index.php">Link-3</a></li>
                 <li><a href="index.php">Link-4</a></li>
-                <li><a href="index.php">Blog</a></li>
+                <li><a href="index.php">Link-5</a></li>
             </ul>
-         <div>
+        <div>
     </section>
 </section>
 
